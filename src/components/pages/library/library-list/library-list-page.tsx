@@ -70,6 +70,7 @@ interface Props {
 	sourcebooks: Sourcebook[];
 	options: Options;
 	hiddenSourcebookIDs: string[];
+	highlightAbout: boolean;
 	showDirectory: () => void;
 	showAbout: () => void;
 	showRoll: () => void;
@@ -1634,7 +1635,7 @@ export const LibraryListPage = (props: Props) => {
 									key: '4',
 									title: 'Category',
 									dataIndex: 'category',
-									filters: [ TerrainCategory.ArcaneObject, TerrainCategory.Environmental, TerrainCategory.Fieldwork, TerrainCategory.Mechanism, TerrainCategory.PowerFixture, TerrainCategory.SiegeEngine ].map(r => ({ text: r, value: r })),
+									filters: [ TerrainCategory.SupernaturalObject, TerrainCategory.Environmental, TerrainCategory.Fieldwork, TerrainCategory.Mechanism, TerrainCategory.PowerFixture, TerrainCategory.SiegeEngine ].map(r => ({ text: r, value: r })),
 									onFilter: (value, record) => record.category.toLowerCase().includes((value as string).toLowerCase()),
 									sorter: (a, b) => a.category.localeCompare(b.category)
 								},
@@ -2064,7 +2065,7 @@ export const LibraryListPage = (props: Props) => {
 							}
 						/>
 					</div>
-					<AppFooter page='library' showAbout={props.showAbout} showRoll={props.showRoll} showReference={props.showReference} />
+					<AppFooter page='library' highlightAbout={props.highlightAbout} showAbout={props.showAbout} showRoll={props.showRoll} showReference={props.showReference} />
 				</div>
 			</ErrorBoundary>
 		);
